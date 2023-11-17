@@ -1,0 +1,96 @@
+<template>
+  <header>
+    <div class="title">
+      <span class="material-icons-sharp">
+          people
+      </span>
+      <h2>People</h2>
+    </div>
+    <div class="user">
+      <span class="placeholder" />
+      <PlaceholderProfile />
+    </div>
+  </header>
+  <section>
+    <div class="people-header">
+      <span class="placeholder" />
+      <span class="placeholder button" />
+    </div>
+    <PlaceholderPerson />
+    <PlaceholderPerson />
+    <div class="person">
+      <img class="avatar" src="@/mike.png" />
+      <span class="title">
+        Mike David
+      </span>
+      <button @click="$router.push('/people/1')">
+        <span class="material-icons-sharp">
+          arrow_circle_right
+        </span>
+      </button>
+    </div>
+    <PlaceholderPerson />
+    <PlaceholderPerson />
+    <PlaceholderPerson />
+  </section>
+</template>
+
+<script>
+import PlaceholderPerson from '@/assets/placeholder-person.svg';
+import PlaceholderProfile from '@/assets/placeholder-profile.svg';
+
+export default {
+  name: 'People',
+  components: { PlaceholderPerson, PlaceholderProfile }
+}
+</script>
+
+<style lang="scss" scoped>
+section {
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  .people-header {
+    position: relative;
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    .placeholder {
+      flex: 1;
+      border-radius: 40px;
+      background-color: #ECECEC;
+      height: 48px;
+      &.button {
+        flex: 0 0 auto;
+        width: 180px;
+        border-radius: 12px;
+      }
+    }
+  }
+  > svg { width: 100%; }
+  .person {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 16px;
+    margin: 0 8px 4px;
+    background-color: #FFF;
+    border-radius: 12px;
+    box-shadow: var(--shadow-base);
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: #ECECEC;
+    }
+    .title {
+      flex: 1;
+    }
+    button {
+      color: var(--primary-shade);
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+</style>

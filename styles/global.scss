@@ -1,0 +1,81 @@
+:root {
+    --primary: #C4BCFC;
+    --primary-shade: #9788FF;
+    --cloud: #F5F5F5;
+    --slate: #2D3A46;
+
+    --display: 'DM Serif Display', sans-serif;
+    --body: 'DM Sans', sans-serif;
+
+    --shadow-base-filter:
+        drop-shadow(0px 0px 1px rgba(var(--coal-rgb), 0.04))
+        drop-shadow(0px 0px 2px rgba(var(--coal-rgb), 0.06))
+        drop-shadow(0px 2px 8px rgba(var(--coal-rgb), 0.04));
+
+    --shadow-base: 0px 0px 1px 0px rgba(0, 0, 0, 0.04), 0px 0px 2px 0px rgba(0, 0, 0, 0.06), 0px 2px 8px 0px rgba(0, 0, 0, 0.04);
+    --shadow-xl: 0px 0px 1px 0px rgba(0, 0, 0, 0.04), 0px 2px 8px 0px rgba(0, 0, 0, 0.04), 0px 8px 24px 0px rgba(0, 0, 0, 0.04), 0px 16px 32px 0px rgba(0, 0, 0, 0.04);
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+
+    font-family: var(--body);
+    color: var(--slate);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--body);
+        font-weight: 700;
+        margin: 0;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+// Resets
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+figure { margin: 0; }
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+img { max-width: 100%; }
+table { border-collapse: collapse; }
+textarea { white-space: revert; }
+input, button {
+    line-height: inherit;
+    font-size: inherit;
+    color: inherit;
+    font-family: var(--body), sans-serif;
+}
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+}
+fieldset {
+    all: unset;
+    display: block;
+}
+:focus-visible { outline: none; }
+hr {
+    border-top-width: 1px;
+    border-bottom: 0;
+    border-style: solid;
+    border-color: var(--slate);
+}
+[data-vue], [data-v-app], #__nuxt { display: contents; }
