@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import { addMessage } from '@/store/global.js';
+
 export default {
     name: 'CourseBuilderStandalone',
     data() {
@@ -22,6 +24,8 @@ export default {
     },
     async mounted() {
         this.embedLink = await $fetch('/api/edit');
+      addMessage(`/api/v1/headless/course/edit
+${this.embedLink}`);
         window.addEventListener('message', this.onMessage);
     },
     beforeUnmount() {

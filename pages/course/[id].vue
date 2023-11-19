@@ -27,7 +27,7 @@
   </template>
   
   <script>
-  import { getCourse, setCourse } from '@/store/global.js';
+  import { getCourse, setCourse, addMessage } from '@/store/global.js';
   
   export default {
     name: 'Course',
@@ -46,6 +46,8 @@
     },
     async mounted() {
       this.embedLink = await $fetch('/api/view', { query: { id: this.courseId } });
+      addMessage(`/api/v1/headless/course/view?id=${this.courseId}
+${this.embedLink}`);
       window.addEventListener('message', this.onMessage);
     },
     beforeUnmount() {

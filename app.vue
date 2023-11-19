@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import { setCourses, setRole, role } from '@/store/global.js';
+import { setCourses, setRole, role, messages, addMessage } from '@/store/global.js';
 
 import Logo from '@/assets/logo.svg';
 import Coassemble from '@/assets/coassemble.svg';
@@ -103,13 +103,17 @@ export default {
     return {
       isSidebarOpen: true,
       isDebuggerOpen: false,
-
-      lastMessage: ''
     }
   },
   computed: {
     role() {
       return role.value;
+    },
+    messages() {
+      return messages.value;
+    },
+    lastMessage() {
+      return this.messages[this.messages.length - 1] || '';
     }
   },
   mounted() {
@@ -125,12 +129,14 @@ export default {
   methods: {
     async getCourses() {
       const courses = await $fetch('/api/courses');
+      addMessage(`/api/v1/headless/courses
+${JSON.stringify(courses, null, 2)}`);
       setCourses(courses);
     },
     onMessage(event) {
         try {
             const message = JSON.parse(event.data);
-            this.lastMessage = JSON.stringify(message, null, 2);
+            addMessage(JSON.stringify(message, null, 2));
         } catch (e) {
             return;
         }

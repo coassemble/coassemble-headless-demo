@@ -11,3 +11,6 @@ export const setCourse = (course) => {
 
 export const role = ref('learner');
 export const setRole = (data) => role.value = data;
+
+export const messages = ref([]);
+export const addMessage = (message) => messages.value.push(message);
