@@ -19,7 +19,7 @@
     <div class="content">
       <div class="profile">
         <div class="profile-header">
-          <img class="avatar" src="@/mike.png" />
+          <img class="avatar" src="//static.ecoach.com/assets/images/mike.png" />
           <div class="profile-detail">
             <h3>
               Mike David
@@ -128,7 +128,7 @@ section {
     display: flex;
     align-items: center;
     gap: 32px;
-    img { margin: -24px -12px; }
+    img { margin-left: 12px; }
     .profile-detail {
       display: flex;
       flex-direction: column;

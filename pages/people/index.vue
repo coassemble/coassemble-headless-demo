@@ -19,7 +19,7 @@
     <PlaceholderPerson />
     <PlaceholderPerson />
     <div class="person">
-      <img class="avatar" src="@/mike.png" />
+      <img class="avatar" src="//static.ecoach.com/assets/images/mike.png" />
       <span class="title">
         Mike David
       </span>

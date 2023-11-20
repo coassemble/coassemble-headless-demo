@@ -12,7 +12,7 @@
       </div>
       <div class="user">
         <span class="placeholder" />
-        <img class="avatar" src="@/mike.png" />
+        <img class="avatar" src="//static.ecoach.com/assets/images/mike.png" />
       </div>
     </header>
     <section>
