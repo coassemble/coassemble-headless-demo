@@ -3,6 +3,7 @@
 import svgLoader from 'vite-svg-loader';
 
 export default defineNuxtConfig({
+    ssr: false,
     app: {
         head: {
             htmlAttrs: { lang: 'en' },
