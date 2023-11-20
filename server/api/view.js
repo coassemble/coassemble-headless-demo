@@ -2,7 +2,7 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
   const params = {
     headers: {
-      'Authorization': `Authorization: COASSEMBLE-V1-SHA256 UserId=${config.user}, UserToken=${config.token}`
+      'Authorization': `COASSEMBLE-V1-SHA256 UserId=${config.user}, UserToken=${config.token}`
     }
   };
 
