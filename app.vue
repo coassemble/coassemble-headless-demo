@@ -234,9 +234,10 @@ main {
     .route-container {
       display: flex;
       flex-direction: column;
-      max-width: 1128px;
+      max-width: 1200px;
       margin: 0 auto;
       height: 100%;
+      padding: 0 48px;
     }
     header {
       display: flex;
