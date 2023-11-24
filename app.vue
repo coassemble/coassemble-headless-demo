@@ -317,6 +317,8 @@ main {
         border-radius: 12px;
         font-weight: 200;
         font-size: 14px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
       }
       select { margin-bottom: 12px; }
       svg {
