@@ -287,7 +287,7 @@ main {
     width: 375px;
     transition: all 0.15s ease-in-out;
     background-color: #FFF;
-    filter: drop-shadow(var(--shadow-base-filter));
+    filter: var(--shadow-base-filter);
     &.open {
       left: calc(100% - 375px);
     }
