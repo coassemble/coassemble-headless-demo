@@ -69,6 +69,8 @@ export default {
     background-color: #FFF;
     box-shadow: var(--shadow-base);
     overflow: hidden;
+    text-align: left;
+    font-weight: 600;
     .progress-bar {
         display: flex;
         align-items: center;
