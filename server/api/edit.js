@@ -7,5 +7,5 @@ export default defineEventHandler(async (event) => {
   };
 
   const id = getQuery(event).id;
-  return await $fetch(`${config.url}/api/v1/headless/course/edit` + (id ? `/${id}` : ''), params);
+  return await $fetch(`${config.url}/api/v1/headless/course/edit` + (id ? `?id=${id}` : ''), params);
 });
