@@ -78,6 +78,7 @@ section {
       flex-direction: column;
       gap: 24px;
       flex: 1;
+      min-width: 456px;
       .training {
         flex: 0 0 auto;
         background-color: #FFF;
@@ -97,7 +98,7 @@ section {
           gap: 24px;
           border-bottom: 1px solid #F5F5F5;
         }
-        button {
+        > button {
           display: flex;
           align-items: center;
           justify-content: space-between;

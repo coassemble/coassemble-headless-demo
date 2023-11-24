@@ -15,16 +15,30 @@
               Dashboard
             </template>
           </RouterLink>
-          <a to="#" :class="{ 'router-link-active': $route.path.includes('/course') }">
-            <span class="material-icons-sharp">
-              school
-            </span>
-            <template v-if="isSidebarOpen">
-              Training
-            </template>
-          </a>
+          <template v-if="isSidebarOpen">
+            <PlaceholderLink />
+            <PlaceholderLink />
+            <PlaceholderLink />
+            <PlaceholderLink />
+            <PlaceholderLink />
+          </template>
+          <template v-else>
+            <PlaceholderLinkMobile />
+            <PlaceholderLinkMobile />
+            <PlaceholderLinkMobile />
+            <PlaceholderLinkMobile />
+            <PlaceholderLinkMobile />
+          </template>
         </template>
         <template v-else-if="role === 'admin'">
+          <template v-if="isSidebarOpen">
+            <PlaceholderLink />
+            <PlaceholderLink />
+          </template>
+          <template v-else>
+            <PlaceholderLinkMobile />
+            <PlaceholderLinkMobile />
+          </template>
           <RouterLink to="/people">
             <span class="material-icons-sharp">
               people
@@ -42,20 +56,14 @@
             </template>
           </RouterLink>
         </template>
-        <template v-if="isSidebarOpen">
-          <PlaceholderLink />
-          <PlaceholderLink />
-          <PlaceholderLink />
-          <PlaceholderLink />
-          <PlaceholderLink />
-        </template>
-        <template v-else>
-          <PlaceholderLinkMobile />
-          <PlaceholderLinkMobile />
-          <PlaceholderLinkMobile />
-          <PlaceholderLinkMobile />
-          <PlaceholderLinkMobile />
-        </template>
+          <template v-if="isSidebarOpen">
+            <PlaceholderLink />
+            <PlaceholderLink />
+          </template>
+          <template v-else>
+            <PlaceholderLinkMobile />
+            <PlaceholderLinkMobile />
+          </template>
       </nav>
       <button @click="isSidebarOpen = !isSidebarOpen">
         <span class="material-icons-sharp">

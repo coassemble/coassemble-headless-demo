@@ -1,5 +1,5 @@
 <template>
-    <article class="course">
+    <button class="course" @click="$router.push(`/course/${course.id}`)">
         <div v-if="!admin" class="progress-bar" :class="{ started: course.progress }">
             <span v-if="course.progress">
                 Progress: {{ course.progress }}%
@@ -42,13 +42,13 @@
                     </span>
                 </button>
             </template>
-            <button v-else @click="$router.push(`/course/${course.id}`)">
+            <button v-else @click.stop="$router.push(`/course/${course.id}`)">
                 <span class="material-icons-sharp">
                     play_circle
                 </span>
             </button>
         </div>
-    </article>
+    </button>
 </template>
 
 <script>
@@ -79,6 +79,7 @@ export default {
         text-transform: uppercase;
         color: var(--slate);
         background-color: #ECECEC;
+        width: 100%;
         &.started {
             background-color: var(--primary);
         }
@@ -88,6 +89,7 @@ export default {
         align-items: center;
         gap: 24px;
         padding-right: 16px;
+        width: 100%;
         .title {
             flex: 1;
         }
