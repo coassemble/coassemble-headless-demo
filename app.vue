@@ -198,6 +198,10 @@ main {
         gap: 8px;
         border-radius: 12px;
         border: 1px solid rgba(255, 255, 255, 0.30);
+        &:hover {
+          border-color: transparent;
+          background: rgba(255, 255, 255, 0.15);
+        }
         &.router-link-active {
           border-color: transparent;
           background: rgba(255, 255, 255, 0.30);
@@ -295,6 +299,7 @@ main {
       position: absolute;
       right: 100%;
       margin: 8px 0;
+      margin-top: 64px;
       background-color: #FFF;
       color: var(--primary-shade);
       border-radius: 12px 0 0 12px; 
