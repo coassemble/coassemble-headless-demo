@@ -93,6 +93,9 @@ section {
       gap: 8px;
       padding: 12px 16px;
       font-weight: 600;
+      &:hover {
+        background-color: var(--primary-shade);
+      }
     }
     .popup {
       position: absolute;

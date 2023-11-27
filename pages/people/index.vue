@@ -18,7 +18,7 @@
     </div>
     <PlaceholderPerson />
     <PlaceholderPerson />
-    <div class="person">
+    <button class="person" @click="$router.push('/people/1')">
       <img class="avatar" src="//static.ecoach.com/assets/images/mike.png" />
       <span class="title">
         Mike David
@@ -28,7 +28,7 @@
           arrow_circle_right
         </span>
       </button>
-    </div>
+    </button>
     <PlaceholderPerson />
     <PlaceholderPerson />
     <PlaceholderPerson />
@@ -76,6 +76,11 @@ section {
     background-color: #FFF;
     border-radius: 12px;
     box-shadow: var(--shadow-base);
+    text-align: left;
+    font-weight: 600;
+    &:hover {
+      box-shadow: var(--shadow-xl);
+    }
     .avatar {
       width: 48px;
       height: 48px;
@@ -84,6 +89,9 @@ section {
     }
     .title {
       flex: 1;
+    }
+    .material-icons-sharp {
+      font-size: 40px;
     }
     button {
       color: var(--primary-shade);

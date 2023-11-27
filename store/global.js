@@ -13,4 +13,4 @@ export const role = ref('learner');
 export const setRole = (data) => role.value = data;
 
 export const messages = ref([]);
-export const addMessage = (message) => messages.value.push(message);
+export const addMessage = (title, data) => messages.value.push({ data: '\r\n\r\n' + data, title, time: new Date().toLocaleTimeString() });

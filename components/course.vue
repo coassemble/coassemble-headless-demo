@@ -1,5 +1,9 @@
 <template>
-    <button class="course" @click="admin ? $router.push(`/build/${course.id}`) : $router.push(`/course/${course.id}`)">
+    <button
+        class="course"
+        :class="{ admin }"
+        @click="admin ? $router.push(`/build/${course.id}`) : $router.push(`/course/${course.id}`)"
+    >
         <div v-if="!admin" class="progress-bar" :class="{ started: course.progress }">
             <span v-if="course.progress">
                 Progress: {{ course.progress }}%
@@ -66,6 +70,9 @@ export default {
     overflow: hidden;
     text-align: left;
     font-weight: 600;
+    &:hover {
+        box-shadow: var(--shadow-xl);
+    }
     .progress-bar {
         display: flex;
         align-items: center;
@@ -103,8 +110,26 @@ export default {
         gap: 8px;
         font-weight: 600;
         color: var(--primary-shade);
+        .material-icons-sharp {
+            font-size: 40px;
+        }
         &.remove {
             color: #BEB8B8;
+        }
+    }
+    &.admin {
+        .course-card {
+            gap: 8px;
+        }
+        button {
+            padding: 8px 16px;
+            border-radius: 12px;
+            .material-icons-sharp {
+                font-size: 24px;
+            }
+            &:hover:not(.remove) {
+                background-color: var(--primary-fade);
+            }
         }
     }
 }

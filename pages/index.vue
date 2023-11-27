@@ -17,6 +17,8 @@
     </h3>
     <div class="content">
       <PlaceholderDashboard />
+      <PlaceholderProfile class="profile" />
+      <PlaceholderProfile class="profile" />
       <div class="training-container">
         <div class="training">
           <h4>Required training</h4>
@@ -43,11 +45,12 @@
 <script>
 import { courses } from '@/store/global.js';
 
+import PlaceholderProfile from '@/assets/placeholder-profile.svg';
 import PlaceholderDashboard from '@/assets/placeholder-dashboard.svg';
 
 export default {
   name: 'Dashboard',
-  components: { PlaceholderDashboard },
+  components: { PlaceholderProfile, PlaceholderDashboard },
   computed: {
     courses() {
       return courses.value;

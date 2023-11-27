@@ -55,6 +55,14 @@
               Training
             </template>
           </RouterLink>
+          <template v-if="isSidebarOpen">
+            <PlaceholderLink />
+            <PlaceholderLink />
+          </template>
+          <template v-else>
+            <PlaceholderLinkMobile />
+            <PlaceholderLinkMobile />
+          </template>
         </template>
       </nav>
       <button @click="isSidebarOpen = !isSidebarOpen">
@@ -69,11 +77,13 @@
       </div>
     </div>
     <div class="debugger" :class="{ open: isDebuggerOpen }">
-      <button @click="isDebuggerOpen = !isDebuggerOpen">
-        <span class="material-icons-sharp">
-          settings
-        </span>
-      </button>
+      <div class="debugger-button">
+        <button @click="isDebuggerOpen = !isDebuggerOpen">
+          <span class="material-icons-sharp">
+            settings
+          </span>
+        </button>
+      </div>
       <div class="debugger-panel">
         Role
         <select v-model="role" @input="onRoleSelect">
@@ -81,7 +91,13 @@
           <option value="learner">Learner</option>
         </select>
         Output
-        <pre><code v-html="lastMessage"/></pre>
+        <pre>
+            <div class="code-header">
+              <h5>{{ lastMessage.title }}</h5>
+              <span>{{ lastMessage.time }}</span>
+            </div>
+            <code v-html="lastMessage.data" />
+        </pre>
         <Coassemble />
       </div>
     </div>
@@ -113,7 +129,7 @@ export default {
       return messages.value;
     },
     lastMessage() {
-      return this.messages[this.messages.length - 1] || '';
+      return this.messages[this.messages.length - 1] || {};
     }
   },
   mounted() {
@@ -129,14 +145,13 @@ export default {
   methods: {
     async getCourses() {
       const courses = await $fetch('/api/courses');
-      addMessage(`/api/v1/headless/courses
-${JSON.stringify(courses, null, 2)}`);
+      addMessage('/api/v1/headless/courses', JSON.stringify(courses, null, 2));
       setCourses(courses);
     },
     onMessage(event) {
         try {
             const message = JSON.parse(event.data);
-            addMessage(JSON.stringify(message, null, 2));
+            addMessage(event.type, JSON.stringify(message, null, 2));
         } catch (e) {
             return;
         }
@@ -254,7 +269,15 @@ main {
         align-items: center;
         gap: 8px;
         h2 { font-size: 24px; }
-        .fade { opacity: 0.5; }
+        button.fade {
+          display: flex;
+          align-items: center;
+          opacity: 0.5;
+          gap: 8px;
+          &:hover {
+            opacity: 0.8;
+          }
+        }
       }
       .user {
         display: flex;
@@ -287,18 +310,27 @@ main {
     &.open {
       left: calc(100% - 375px);
     }
-    button {
-      position: absolute;
-      right: 100%;
-      margin: 8px 0;
-      margin-top: 64px;
-      background-color: #FFF;
-      color: var(--primary-shade);
-      border-radius: 12px 0 0 12px; 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px;
+    .debugger-button {
+        position: absolute;
+        right: 100%;
+        margin: 8px 0;
+        margin-top: 64px;
+        background-color: #FFF;
+        color: var(--primary-shade);
+        border-radius: 12px 0 0 12px; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px;
+        button {
+          display: flex;
+          color: var(--primary-shade);
+          border-radius: 8px;
+          padding: 8px;
+          &:hover {
+            background-color: var(--primary-fade);
+          }
+        }
     }
     .debugger-panel {
       padding: 16px 24px;
@@ -307,15 +339,35 @@ main {
       flex-direction: column;
       gap: 12px;
       pre {
+        position: relative;
+        display: flex;
+        flex-direction: column;
         flex: 1;
         margin: 0;
         padding: 12px;
+        padding-top: 0;
         background-color: var(--cloud);
         border-radius: 12px;
         font-weight: 200;
         font-size: 14px;
         white-space: pre-wrap;
         word-wrap: break-word;
+        overflow: auto;
+        .code-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          position: sticky;
+          top: 0;
+          left: 0;
+          right: 0;
+          padding: 12px;
+          margin: -12px;
+          background-color: rgba(0, 0, 0, 0.5);
+          color: #FFF;
+          h5 { font-size: 14px; }
+          span { font-size: 10px; }
+        }
       }
       select { margin-bottom: 12px; }
       svg {

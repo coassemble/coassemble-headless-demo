@@ -22,8 +22,7 @@ export default {
     },
     async mounted() {
         this.embedLink = await $fetch('/api/edit', { query: { id: this.courseId } });
-      addMessage(`/api/v1/headless/course/edit?id=${this.courseId}
-${this.embedLink}`);
+        addMessage(`/api/v1/headless/course/edit?id=${this.courseId}`, this.embedLink);
         window.addEventListener('message', this.onMessage);
     },
     beforeUnmount() {

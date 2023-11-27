@@ -1,14 +1,16 @@
 <template>
   <header>
     <div class="title">
-      <span class="material-icons-sharp fade">
-          people
-      </span>
-      <h2 class="fade">People</h2>
+      <button class="fade" @click="$router.push('/people')">
         <span class="material-icons-sharp">
-            arrow_right
+            people
         </span>
-        <h2>Mike David</h2>
+        <h2>People</h2>
+      </button>
+      <span class="material-icons-sharp">
+          arrow_right
+      </span>
+      <h2>Mike David</h2>
     </div>
     <div class="user">
       <span class="placeholder" />
@@ -48,7 +50,10 @@
           <div v-else class="empty">
             There is no required learning for Mike David
           </div>
-          <button @click="isAssigning = !isAssigning">
+          <button
+            class="assign"
+            @click="isAssigning = !isAssigning"
+          >
             Assign learning
           </button>
           <div v-if="isAssigning" class="popup">
@@ -206,7 +211,7 @@ section {
           font-weight: 400;
           font-size: 14px;
         }
-        button {
+        button.assign {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -216,6 +221,9 @@ section {
           height: 48px;
           padding: 24px;
           border-radius: 12px;
+          &:hover {
+            background-color: var(--primary-shade);
+          }
         }
         .popup {
           position: absolute;

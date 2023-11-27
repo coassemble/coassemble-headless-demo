@@ -1,10 +1,12 @@
 <template>
     <header>
       <div class="title">
-        <span class="material-icons-sharp fade">
-            grid_view
-        </span>
-        <h2 class="fade">Dashboard</h2>
+        <button class="fade" @click="$router.push('/people')">
+            <span class="material-icons-sharp">
+                grid_view
+            </span>
+            <h2>Dashboard</h2>
+        </button>
         <span class="material-icons-sharp">
             arrow_right
         </span>
@@ -20,7 +22,7 @@
             <span class="material-icons-sharp">
                 hourglass_empty
             </span>
-            <span>Course loading...</span>
+            <span>{{ loading }}</span>
         </div>
         <iframe :src="embedLink" />
     </section>
@@ -33,7 +35,8 @@
     name: 'Course',
     data() {
         return {
-            embedLink: null
+            embedLink: null,
+            loading: 'Course loading...'
         };
     },
     computed: {
@@ -46,12 +49,16 @@
     },
     async mounted() {
       this.embedLink = await $fetch('/api/view', { query: { id: this.courseId } });
-      addMessage(`/api/v1/headless/course/view?id=${this.courseId}
-${this.embedLink}`);
+      addMessage(`/api/v1/headless/course/view?id=${this.courseId}`, this.embedLink);
       window.addEventListener('message', this.onMessage);
+
+      setInterval(() => {
+            this.loading = this.loading === 'Course loading...' ? 'Course loading' : this.loading + '.';
+        }, 500);
     },
     beforeUnmount() {
       window.removeEventListener('message', this.onMessage);
+
     },
     methods: {
         onMessage(event) {
@@ -94,7 +101,16 @@ ${this.embedLink}`);
         gap: 12px;
         .material-icons-sharp {
             color: var(--primary-shade);
+            animation: rotate 1.5s ease infinite;
         }
+    }
+  }
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(180deg);
     }
   }
   </style>
