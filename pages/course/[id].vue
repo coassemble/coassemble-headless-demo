@@ -20,7 +20,7 @@
     <section>
         <div class="loading-state">
             <span class="material-icons-sharp">
-                hourglass_empty
+                hourglass_top
             </span>
             <span>{{ loading }}</span>
         </div>
@@ -101,7 +101,7 @@
         gap: 12px;
         .material-icons-sharp {
             color: var(--primary-shade);
-            animation: rotate 1.5s ease infinite;
+            animation: rotate 2s ease infinite;
         }
     }
   }
@@ -110,7 +110,7 @@
       transform: rotate(0deg);
     }
     100% {
-      transform: rotate(180deg);
+      transform: rotate(360deg);
     }
   }
   </style>
