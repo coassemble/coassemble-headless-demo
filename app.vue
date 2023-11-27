@@ -56,14 +56,6 @@
             </template>
           </RouterLink>
         </template>
-          <template v-if="isSidebarOpen">
-            <PlaceholderLink />
-            <PlaceholderLink />
-          </template>
-          <template v-else>
-            <PlaceholderLinkMobile />
-            <PlaceholderLinkMobile />
-          </template>
       </nav>
       <button @click="isSidebarOpen = !isSidebarOpen">
         <span class="material-icons-sharp">
