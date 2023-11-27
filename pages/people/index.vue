@@ -8,7 +8,7 @@
     </div>
     <div class="user">
       <span class="placeholder" />
-      <PlaceholderProfile />
+      <img class="avatar" src="//static.ecoach.com/assets/images/admin.png" />
     </div>
   </header>
   <section>
@@ -37,11 +37,10 @@
 
 <script>
 import PlaceholderPerson from '@/assets/placeholder-person.svg';
-import PlaceholderProfile from '@/assets/placeholder-profile.svg';
 
 export default {
   name: 'People',
-  components: { PlaceholderPerson, PlaceholderProfile }
+  components: { PlaceholderPerson }
 }
 </script>
 

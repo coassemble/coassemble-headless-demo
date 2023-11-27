@@ -8,7 +8,7 @@
     </div>
     <div class="user">
       <span class="placeholder" />
-      <PlaceholderProfile />
+      <img class="avatar" src="//static.ecoach.com/assets/images/admin.png" />
     </div>
   </header>
   <section>
@@ -53,11 +53,8 @@
 <script>
 import { courses } from '@/store/global.js';
 
-import PlaceholderProfile from '@/assets/placeholder-profile.svg';
-
 export default {
   name: 'Training',
-  components: { PlaceholderProfile },
   data() {
     return {
       isCreating: false

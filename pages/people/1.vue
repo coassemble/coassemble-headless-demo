@@ -12,7 +12,7 @@
     </div>
     <div class="user">
       <span class="placeholder" />
-      <PlaceholderProfile />
+      <img class="avatar" src="//static.ecoach.com/assets/images/admin.png" />
     </div>
   </header>
   <section>
@@ -83,11 +83,10 @@
 import { courses, setCourse } from '@/store/global.js';
 
 import PlaceholderPost from '@/assets/placeholder-post.svg';
-import PlaceholderProfile from '@/assets/placeholder-profile.svg';
 
 export default {
   name: 'Profile',
-  components: { PlaceholderPost, PlaceholderProfile },
+  components: { PlaceholderPost },
   data() {
     return {
       isAssigning: false
