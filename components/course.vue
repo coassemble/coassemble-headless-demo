@@ -1,5 +1,5 @@
 <template>
-    <button class="course" @click="$router.push(`/course/${course.id}`)">
+    <button class="course" @click="admin ? $router.push(`/build/${course.id}`) : $router.push(`/course/${course.id}`)">
         <div v-if="!admin" class="progress-bar" :class="{ started: course.progress }">
             <span v-if="course.progress">
                 Progress: {{ course.progress }}%
