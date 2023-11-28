@@ -17,8 +17,8 @@
     </h3>
     <div class="content">
       <PlaceholderDashboard />
-      <PlaceholderProfile class="profile" />
-      <PlaceholderProfile class="profile" />
+      <PlaceholderProfile class="profile one" />
+      <PlaceholderProfile class="profile two" />
       <div class="training-container">
         <div class="training">
           <h4>Required training</h4>
@@ -72,9 +72,18 @@ section {
     align-items: flex-start;
     gap: 24px;
     margin-top: 24px;
+    position: relative;
     svg {
       box-shadow: var(--shadow-xl);
       border-radius: 16px;
+      &.profile {
+        position: absolute;
+        box-shadow: none;
+        border-radius: 0;
+        left: 28px;
+        &.one { top: 140px; }
+        &.two { top: 412px; }
+      }
     }
     .training-container {
       display: flex;

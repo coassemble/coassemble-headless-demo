@@ -16,8 +16,14 @@
       <span class="placeholder" />
       <span class="placeholder button" />
     </div>
-    <PlaceholderPerson />
-    <PlaceholderPerson />
+    <div class="person-placeholder">
+      <PlaceholderPerson />
+      <PlaceholderProfile class="profile" />
+    </div>
+    <div class="person-placeholder">
+      <PlaceholderPerson />
+      <PlaceholderProfile class="profile" />
+    </div>
     <button class="person" @click="$router.push('/people/1')">
       <img class="avatar" src="//static.ecoach.com/assets/images/mike.png" />
       <span class="title">
@@ -29,18 +35,28 @@
         </span>
       </button>
     </button>
-    <PlaceholderPerson />
-    <PlaceholderPerson />
-    <PlaceholderPerson />
+    <div class="person-placeholder">
+      <PlaceholderPerson />
+      <PlaceholderProfile class="profile" />
+    </div>
+    <div class="person-placeholder">
+      <PlaceholderPerson />
+      <PlaceholderProfile class="profile" />
+    </div>
+    <div class="person-placeholder">
+      <PlaceholderPerson />
+      <PlaceholderProfile class="profile" />
+    </div>
   </section>
 </template>
 
 <script>
 import PlaceholderPerson from '@/assets/placeholder-person.svg';
+import PlaceholderProfile from '@/assets/placeholder-profile.svg';
 
 export default {
   name: 'People',
-  components: { PlaceholderPerson }
+  components: { PlaceholderPerson, PlaceholderProfile }
 }
 </script>
 
@@ -66,7 +82,6 @@ section {
       }
     }
   }
-  > svg { width: 100%; }
   .person {
     display: flex;
     align-items: center;
@@ -97,6 +112,16 @@ section {
       color: var(--primary-shade);
       display: flex;
       align-items: center;
+    }
+  }
+  .person-placeholder {
+    position: relative;
+    > svg { width: 100%; }
+    .profile {
+      position: absolute;
+      top: 22px;
+      left: 24px;
+      width: auto;
     }
   }
 }
