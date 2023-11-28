@@ -132,6 +132,11 @@ export default {
       return this.messages[this.messages.length - 1] || {};
     }
   },
+  watch: {
+    $route(to, from) {
+      if (from.path.includes('/build')) this.getCourses();
+    }
+  },
   mounted() {
       this.getCourses();
       window.addEventListener('message', this.onMessage);
