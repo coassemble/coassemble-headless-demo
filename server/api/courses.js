@@ -6,8 +6,5 @@ export default defineEventHandler(async (event) => {
     }
   };
 
-  return await $fetch(`${config.url}/api/v1/headless/courses`, params)
-    .catch((error) => {
-      return { error, params , url: `${config.url}/api/v1/headless/courses` };
-    });
+  return await $fetch(`${config.url}/api/v1/headless/courses`, params);
 });

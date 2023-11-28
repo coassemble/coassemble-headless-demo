@@ -2,7 +2,7 @@
   <header>
     <div class="title">
       <span class="material-icons-sharp">
-          edit
+        school
       </span>
       <h2>Training</h2>
     </div>

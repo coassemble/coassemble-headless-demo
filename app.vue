@@ -49,7 +49,7 @@
           </RouterLink>
           <RouterLink to="/training">
             <span class="material-icons-sharp">
-              edit
+              school
             </span>
             <template v-if="isSidebarOpen">
               Training
@@ -135,7 +135,7 @@ export default {
   mounted() {
       this.getCourses();
       window.addEventListener('message', this.onMessage);
-      if (this.$route.path.includes('/people') || this.$route.path === '/training' || this.$route.path.includes('/build')) {
+      if (this.$route.path.includes('/people') || this.$route.path.includes('/training') || this.$route.path.includes('/build')) {
         setRole('admin');
       }
   },

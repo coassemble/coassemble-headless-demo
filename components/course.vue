@@ -4,8 +4,11 @@
         :class="{ admin }"
         @click="admin ? $router.push(`/build/${course.id}`) : $router.push(`/course/${course.id}`)"
     >
-        <div v-if="!admin" class="progress-bar" :class="{ started: course.progress }">
-            <span v-if="course.progress">
+        <div v-if="!admin" class="progress-bar" :class="{ started: course.progress, complete: course.progress === 100 }">
+            <span v-if="course.progress === 100">
+                Status: Complete
+            </span>
+            <span v-else-if="course.progress">
                 Progress: {{ course.progress }}%
             </span>
             <span v-else>
@@ -23,13 +26,13 @@
                 {{ course.title }}
             </span>
             <template v-if="admin">
-                <button>
+                <button @click.stop="$router.push(`/preview/${course.id}`)">
                     <span class="material-icons-sharp">
                         play_circle
                     </span>
-                    Launch
+                    Preview
                 </button>
-                <button @click="$router.push(`/build/${course.id}`)">
+                <button @click.stop="$router.push(`/build/${course.id}`)">
                     <span class="material-icons-sharp">
                         edit
                     </span>
@@ -86,6 +89,10 @@ export default {
         width: 100%;
         &.started {
             background-color: var(--primary);
+        }
+        &.complete {
+            background-color: var(--success);
+            color: #FFF;
         }
     }
     .course-card {

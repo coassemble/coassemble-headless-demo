@@ -17,24 +17,35 @@
     </h3>
     <div class="content">
       <PlaceholderDashboard />
-      <PlaceholderProfile class="profile one" />
-      <PlaceholderProfile class="profile two" />
       <div class="training-container">
         <div class="training">
           <h4>Required training</h4>
-          <div class="courses">
+          <div v-if="incompleteCourses.length" class="courses">
             <Course
-              v-for="course in courses"
+              v-for="course in incompleteCourses"
               :key="course.id"
               :course="course"
             />
-          </div> 
-          <button>
+          </div>
+          <div v-else class="empty">
+            You have completed all your required learning.
+          </div>
+          <button @click="isShowingCompleted = !isShowingCompleted">
             Show completed training
-            <span class="material-icons-sharp">
+            <span class="material-icons-sharp" :class="{ open: isShowingCompleted }">
               arrow_right
             </span>
           </button>
+          <div v-if="isShowingCompleted && completedCourses.length" class="courses">
+              <Course
+                v-for="course in completedCourses"
+                :key="course.id"
+                :course="course"
+              />
+          </div>
+          <div v-else-if="isShowingCompleted" class="empty">
+            You have not completed any training.
+          </div>
         </div>
         <div class="placeholder" />
       </div>
@@ -51,9 +62,20 @@ import PlaceholderDashboard from '@/assets/placeholder-dashboard.svg';
 export default {
   name: 'Dashboard',
   components: { PlaceholderProfile, PlaceholderDashboard },
+  data() {
+    return {
+      isShowingCompleted: false
+    };
+  },
   computed: {
     courses() {
-      return courses.value;
+      return courses.value || [];
+    },
+    incompleteCourses() {
+      return this.courses.filter(course => course.progress !== 100) || [];
+    },
+    completedCourses() {
+      return this.courses.filter(course => course.progress === 100) || [];
     }
   }
 }
@@ -76,14 +98,6 @@ section {
     svg {
       box-shadow: var(--shadow-xl);
       border-radius: 16px;
-      &.profile {
-        position: absolute;
-        box-shadow: none;
-        border-radius: 0;
-        left: 28px;
-        &.one { top: 140px; }
-        &.two { top: 412px; }
-      }
     }
     .training-container {
       display: flex;
@@ -103,6 +117,17 @@ section {
         h4 {
           font-size: 24px;
         }
+        .empty {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: rgba(196, 188, 252, 0.20);
+          padding: 24px;
+          border-radius: 12px;
+          font-weight: 400;
+          font-size: 16px;
+          margin-bottom: 16px;
+        }
         .courses {
           padding: 24px 0;
           display: flex;
@@ -116,6 +141,9 @@ section {
           justify-content: space-between;
           width: 100%;
           font-weight: 700;
+          .material-icons-sharp.open {
+            transform: rotate(90deg);
+          }
         }
       }
       .placeholder {
