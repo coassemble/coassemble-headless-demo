@@ -92,7 +92,6 @@ export default {
         }
         &.complete {
             background-color: var(--success);
-            color: #FFF;
         }
     }
     .course-card {
