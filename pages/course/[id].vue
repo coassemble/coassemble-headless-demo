@@ -1,7 +1,7 @@
 <template>
     <header>
       <div class="title">
-        <button class="fade" @click="$router.push('/people')">
+        <button class="fade" @click="$router.push('/')">
             <span class="material-icons-sharp">
                 grid_view
             </span>
