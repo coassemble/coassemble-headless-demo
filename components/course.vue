@@ -66,7 +66,7 @@ export default {
     methods: {
         remove() {
             removeCourse(this.course.id);
-            $fetch('/api/delete?course=' + this.course.id);
+            $fetch('/api/delete?id=' + this.course.id);
         }
     }
 }
