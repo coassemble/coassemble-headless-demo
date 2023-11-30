@@ -58,7 +58,7 @@
           </button>
           <div v-if="isAssigning" class="popup">
             <button
-              v-for="course in courses"
+              v-for="course in unassignedCourses"
               @click="assignCourse(course)"
             >
               <img
@@ -103,6 +103,9 @@ export default {
     },
     learnerCourses() {
       return courses.value.filter(course => course.enrolled);
+    },
+    unassignedCourses() {
+      return this.courses.filter(course => !course.enrolled);
     }
   },
   methods: {

@@ -7,6 +7,10 @@ export const setCourse = (course) => {
     const index = courses.value.findIndex(({ id }) => id === course.id);
     if (~index) courses.value[index] = { ...courses.value[index], ...course };
 }
+export const removeCourse = (id) => {
+    const index = courses.value.findIndex(({ id: _id }) => id === _id);
+    if (~index) courses.value.splice(index, 1);
+}
 
 
 export const role = ref('learner');

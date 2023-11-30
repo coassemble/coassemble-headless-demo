@@ -69,7 +69,8 @@ export default {
   },
   computed: {
     courses() {
-      return courses.value || [];
+      const allCourses = courses.value || [];
+      return allCourses.filter(course => course.enrolled) || [];
     },
     incompleteCourses() {
       return this.courses.filter(course => course.progress !== 100) || [];

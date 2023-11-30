@@ -87,7 +87,7 @@ section {
     align-items: center;
     gap: 24px;
     padding: 16px;
-    margin: 0 8px 4px;
+    margin: 6px 4px 6px 8px;
     background-color: #FFF;
     border-radius: 12px;
     box-shadow: var(--shadow-base);
@@ -116,6 +116,7 @@ section {
   }
   .person-placeholder {
     position: relative;
+    display: flex;
     > svg { width: 100%; }
     .profile {
       position: absolute;

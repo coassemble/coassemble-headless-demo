@@ -38,7 +38,7 @@
                     </span>
                     Edit
                 </button>
-                <button class="remove">
+                <button class="remove" @click.stop="remove">
                     <span class="material-icons-sharp">
                         remove_circle
                     </span>
@@ -54,11 +54,18 @@
 </template>
 
 <script>
+import { removeCourse } from '@/store/global.js';
+
 export default {
     name: 'Course',
     props: {
         course: { type: Object, required: true },
         admin: { type: Boolean, default: false }
+    },
+    methods: {
+        remove() {
+            removeCourse(this.course.id);
+        }
     }
 }
 </script>
