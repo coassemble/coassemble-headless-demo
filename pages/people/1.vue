@@ -45,6 +45,8 @@
               v-for="course in learnerCourses"
               :key="course.id"
               :course="course"
+              admin
+              small
             />
           </div>
           <div v-else class="empty">

@@ -25,7 +25,7 @@
             <span class="title">
                 {{ course.title }}
             </span>
-            <template v-if="admin">
+            <template v-if="admin && !small">
                 <button @click.stop="$router.push(`/preview/${course.id}`)">
                     <span class="material-icons-sharp">
                         play_circle
@@ -44,7 +44,7 @@
                     </span>
                 </button>
             </template>
-            <button v-else @click.stop="$router.push(`/course/${course.id}`)">
+            <button v-else @click.stop="admin ? $router.push(`/build/${course.id}`) : $router.push(`/course/${course.id}`)">
                 <span class="material-icons-sharp">
                     play_circle
                 </span>
@@ -60,7 +60,8 @@ export default {
     name: 'Course',
     props: {
         course: { type: Object, required: true },
-        admin: { type: Boolean, default: false }
+        admin: { type: Boolean, default: false },
+        small: { type: Boolean, default: false }
     },
     methods: {
         remove() {
