@@ -68,11 +68,6 @@
                   :src="course.image"
                   :alt="course.title"
               />
-              <img
-                  v-else-if="course.thumbnail"
-                  :src="course.thumbnail"
-                  :alt="course.title"
-              />
               <span v-else class="placeholder-image" />
               <span class="title">
                   {{ course.title }}
