@@ -14,14 +14,14 @@
     </div>
     <div class="user">
       <span class="placeholder" />
-      <img class="avatar" src="//static.ecoach.com/assets/images/admin.png" />
+      <img class="avatar" src="//static.ecoach.com/assets/images/peopletech/admin.png" />
     </div>
   </header>
   <section>
     <div class="content">
       <div class="profile">
         <div class="profile-header">
-          <img class="avatar" src="//static.ecoach.com/assets/images/mike.png" />
+          <img class="avatar" src="//static.ecoach.com/assets/images/peopletech/mike.png" />
           <div class="profile-detail">
             <h3>
               Mike David
@@ -68,7 +68,7 @@
                   :src="course.image"
                   :alt="course.title"
               />
-              <span v-else class="placeholder-image" />
+              <img v-else src="//static.ecoach.com/assets/images/peopletech/placeholder.png" />
               <span class="title">
                   {{ course.title }}
               </span>
@@ -249,7 +249,7 @@ section {
             text-align: left;
             gap: 12px;
             height: auto;
-            img, .placeholder-image {
+            img {
                 width: 64px;
                 height: 64px;
                 object-fit: cover;

@@ -21,7 +21,7 @@
                 :src="course.image"
                 :alt="course.title"
             />
-            <span v-else class="placeholder-image" />
+            <img v-else src="//static.ecoach.com/assets/images/peopletech/placeholder.png" />
             <span class="title">
                 {{ course.title }}
             </span>
@@ -113,7 +113,7 @@ export default {
             flex: 1;
         }
     }
-    img, .placeholder-image {
+    img {
         width: 80px;
         height: 80px;
         object-fit: cover;
