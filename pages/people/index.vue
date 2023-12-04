@@ -12,17 +12,20 @@
     </div>
   </header>
   <section>
-    <div class="people-header">
-      <span class="placeholder" />
-      <span class="placeholder button" />
+    <div class="person-placeholder">
+      <PlaceholderProfile class="profile" />
+      <span />
+      <button disabled />
     </div>
     <div class="person-placeholder">
-      <PlaceholderPerson />
       <PlaceholderProfile class="profile" />
+      <span />
+      <button disabled />
     </div>
     <div class="person-placeholder">
-      <PlaceholderPerson />
       <PlaceholderProfile class="profile" />
+      <span />
+      <button disabled />
     </div>
     <button class="person" @click="$router.push('/people/1')">
       <img class="avatar" src="//static.ecoach.com/assets/images/mike.png" />
@@ -36,16 +39,19 @@
       </button>
     </button>
     <div class="person-placeholder">
-      <PlaceholderPerson />
       <PlaceholderProfile class="profile" />
+      <span />
+      <button disabled />
     </div>
     <div class="person-placeholder">
-      <PlaceholderPerson />
       <PlaceholderProfile class="profile" />
+      <span />
+      <button disabled />
     </div>
     <div class="person-placeholder">
-      <PlaceholderPerson />
       <PlaceholderProfile class="profile" />
+      <span />
+      <button disabled />
     </div>
   </section>
 </template>
@@ -65,6 +71,7 @@ section {
   padding: 16px 0;
   display: flex;
   flex-direction: column;
+  gap: 16px;
   .people-header {
     position: relative;
     display: flex;
@@ -87,7 +94,6 @@ section {
     align-items: center;
     gap: 24px;
     padding: 16px;
-    margin: 6px 4px 6px 8px;
     background-color: #FFF;
     border-radius: 12px;
     box-shadow: var(--shadow-base);
@@ -117,12 +123,25 @@ section {
   .person-placeholder {
     position: relative;
     display: flex;
-    > svg { width: 100%; }
-    .profile {
-      position: absolute;
-      top: 22px;
-      left: 24px;
-      width: auto;
+    align-items: center;
+    height: 72px;
+    border-radius: 12px;
+    background-color: #FAFAFA;
+    box-shadow: var(--shadow-base);
+    padding: 20px;
+    gap: 16px;
+    > span {
+      background-color: #F5F5F5;
+      width: 180px;
+      height: 16px;
+      border-radius: 16px;
+    }
+    > button {
+      background-color: #F5F5F5;
+      width: 32px;
+      height: 32px;
+      border-radius: 16px;
+      margin-left: auto;
     }
   }
 }
