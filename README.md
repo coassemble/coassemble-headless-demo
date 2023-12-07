@@ -1,6 +1,8 @@
-# Nuxt 3 Minimal Starter
+# Coassemble Headless Demo
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a demo of how to integrate a third-party platform with Coassemble's headless API.
+
+The main files to take note of are in `/server/api`—these detail how to authenticate with Coassemble and the main operations you can perform.
 
 ## Setup
 
@@ -38,38 +40,3 @@ yarn dev
 bun run dev
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
