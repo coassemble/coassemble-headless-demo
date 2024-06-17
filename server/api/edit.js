@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
   const clientIdentifier = getRandomID();
   const identifier = getRandomID();
 
-  const query = `?clientIdentifier=${clientIdentifier}&identifier=${identifier}`;
+  let query = `?clientIdentifier=${clientIdentifier}&identifier=${identifier}`;
   if (id) query += `&id=${id}`;
   return await $fetch(`${config.url}/api/v1/headless/course/edit` + query, params);
 });
