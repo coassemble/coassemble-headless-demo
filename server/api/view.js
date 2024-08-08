@@ -6,6 +6,14 @@ export default defineEventHandler(async (event) => {
     }
   };
 
+  const getRandomID = () => {
+    return Math.floor(Math.random() * 1000000);
+  }
+
   const id = getQuery(event).id;
-  return await $fetch(`${config.url}/api/v1/headless/course/view` + (id ? `?id=${id}` : ''), params);
+  const identifier = getRandomID();
+
+  let query = `?identifier=${identifier}`;
+  if (id) query += `&id=${id}`;
+  return await $fetch(`${config.url}/api/v1/headless/course/view` + query, params);
 });
