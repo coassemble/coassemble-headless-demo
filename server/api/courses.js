@@ -5,7 +5,6 @@ export default defineEventHandler(async (event) => {
       'Authorization': `COASSEMBLE-V1-SHA256 UserId=${config.user}, UserToken=${config.token}`
     }
   };
-  return { params, config };
 
   return await $fetch(`${config.url}/api/v1/headless/courses`, params);
 });
