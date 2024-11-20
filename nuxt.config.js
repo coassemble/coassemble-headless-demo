@@ -29,7 +29,7 @@ export default defineNuxtConfig({
         '~/styles/global.scss'
     ],
     runtimeConfig: {
-        url: process.env.API_URL || 'https://app.coassemble.net',
+        url: process.env.API_URL,
         token: process.env.API_KEY,
         user: process.env.API_USER_ID
     },
