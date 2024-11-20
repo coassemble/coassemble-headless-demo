@@ -6,5 +6,5 @@ export default defineEventHandler(async (event) => {
     }
   };
 
-  return await $fetch(`${config.url}/v1/headless/courses`, params);
+  return await fetch(`${config.url}/v1/headless/courses`, params);
 });
