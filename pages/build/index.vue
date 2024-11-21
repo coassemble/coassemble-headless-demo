@@ -34,7 +34,7 @@ export default {
         const identifier = getRandomID();
 
         this.embedLink = await $fetch(
-            `${this.$config.public.url}/v1/headless/course/edit?clientIdentifier=${clientIdentifier}&identifier=${identifier}`,
+            `${this.$config.public.url}/api/v1/headless/course/edit?clientIdentifier=${clientIdentifier}&identifier=${identifier}`,
             params
         );
         addMessage(`/api/v1/headless/course/edit`, this.embedLink);

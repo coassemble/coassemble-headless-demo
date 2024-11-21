@@ -72,7 +72,7 @@ export default {
                 }
             };
 
-            await $fetch(`${this.$config.public.url}/v1/headless/course/${this.course.id}`, params);
+            await $fetch(`${this.$config.public.url}/api/v1/headless/course/${this.course.id}`, params);
             removeCourse(this.course.id);
         }
     }

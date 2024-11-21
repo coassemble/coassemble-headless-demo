@@ -155,7 +155,7 @@ export default {
         }
       };
 
-      const courses = await $fetch(`${this.$config.public.url}/v1/headless/courses`, params);
+      const courses = await $fetch(`${this.$config.public.url}/api/v1/headless/courses`, params);
       addMessage('/api/v1/headless/courses', JSON.stringify(courses, null, 2));
       setCourses(courses);
     },
