@@ -149,7 +149,14 @@ export default {
   },
   methods: {
     async getCourses() {
-      const courses = await $fetch('/api/courses');
+      const config = useRuntimeConfig();
+      const params = {
+        headers: {
+          'Authorization': `COASSEMBLE-V1-SHA256 UserId=${config.public.user}, UserToken=${config.public.token}`
+        }
+      };
+
+      const courses = await $fetch(`${config.public.url}/v1/headless/courses`, params);
       addMessage('/api/v1/headless/courses', JSON.stringify(courses, null, 2));
       setCourses(courses);
     },
