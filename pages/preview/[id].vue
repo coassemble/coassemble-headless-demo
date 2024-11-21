@@ -48,17 +48,29 @@
         }
     },
     async mounted() {
-      this.embedLink = await $fetch('/api/view', { query: { id: this.courseId } });
-      addMessage(`/api/v1/headless/course/view?id=${this.courseId}`, this.embedLink);
-      window.addEventListener('message', this.onMessage);
+        const config = useRuntimeConfig();
+        const params = {
+            headers: {
+                'Authorization': `COASSEMBLE-V1-SHA256 UserId=${config.public.user}, UserToken=${config.public.token}`
+            }
+        };
 
-      setInterval(() => {
+        const getRandomID = () => Math.floor(Math.random() * 1000000);
+        const identifier = getRandomID();
+
+        this.embedLink = await $fetch(
+            `${config.public.url}/v1/headless/course/view?identifier=${identifier}&id=${this.courseId}`,
+            params
+        );
+        addMessage(`/api/v1/headless/course/view?id=${this.courseId}`, this.embedLink);
+        window.addEventListener('message', this.onMessage);
+
+        setInterval(() => {
             this.loading = this.loading === 'Course loading...' ? 'Course loading' : this.loading + '.';
         }, 500);
     },
     beforeUnmount() {
-      window.removeEventListener('message', this.onMessage);
-
+        window.removeEventListener('message', this.onMessage);
     },
     methods: {
         onMessage(event) {
