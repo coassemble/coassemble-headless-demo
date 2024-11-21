@@ -21,10 +21,9 @@ export default {
         }
     },
     async mounted() {
-        const config = useRuntimeConfig();
         const params = {
             headers: {
-                'Authorization': `COASSEMBLE-V1-SHA256 UserId=${config.public.user}, UserToken=${config.public.token}`
+                'Authorization': `COASSEMBLE-V1-SHA256 UserId=${this.$config.public.user}, UserToken=${this.$config.public.token}`
             }
         };
 
@@ -33,7 +32,7 @@ export default {
         const identifier = getRandomID();
 
         this.embedLink = await $fetch(
-            `${config.public.url}/v1/headless/course/edit?clientIdentifier=${clientIdentifier}&identifier=${identifier}&id=${this.courseId}`,
+            `${this.$config.public.url}/v1/headless/course/edit?clientIdentifier=${clientIdentifier}&identifier=${identifier}&id=${this.courseId}`,
             params
         );
         addMessage(`/api/v1/headless/course/edit?id=${this.courseId}`, this.embedLink);
