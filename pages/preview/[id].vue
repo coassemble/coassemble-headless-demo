@@ -58,10 +58,10 @@
         const identifier = getRandomID();
 
         this.embedLink = await $fetch(
-            `${this.$config.public.url}/api/v1/headless/course/view?identifier=${identifier}&id=${this.courseId}`,
+            `${this.$config.public.url}/api/v1/headless/course/edit?flow=preview&identifier=${identifier}&id=${this.courseId}`,
             params
         );
-        addMessage(`/api/v1/headless/course/view?id=${this.courseId}`, this.embedLink);
+        addMessage(`/api/v1/headless/course/preview?id=${this.courseId}`, this.embedLink);
         window.addEventListener('message', this.onMessage);
 
         setInterval(() => {
