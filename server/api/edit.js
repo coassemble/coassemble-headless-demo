@@ -16,5 +16,5 @@ export default defineEventHandler(async (event) => {
 
   let query = `?clientIdentifier=${clientIdentifier}&identifier=${identifier}`;
   if (id) query += `&id=${id}`;
-  return await $fetch(`${config.url}/api/v1/headless/course/edit` + query, params);
+  return await $fetch(`${config.url}/v1/headless/course/edit` + query, params);
 });

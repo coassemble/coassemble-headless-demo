@@ -64,9 +64,16 @@ export default {
         small: { type: Boolean, default: false }
     },
     methods: {
-        remove() {
+        async remove() {
+            const params = {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `COASSEMBLE-V1-SHA256 UserId=${this.$config.public.user}, UserToken=${this.$config.public.token}`
+                }
+            };
+
+            await $fetch(`${this.$config.public.url}/api/v1/headless/course/${this.course.id}`, params);
             removeCourse(this.course.id);
-            $fetch('/api/delete?id=' + this.course.id);
         }
     }
 }

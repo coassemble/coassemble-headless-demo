@@ -48,7 +48,19 @@
         }
     },
     async mounted() {
-      this.embedLink = await $fetch('/api/view', { query: { id: this.courseId } });
+      const params = {
+          headers: {
+              'Authorization': `COASSEMBLE-V1-SHA256 UserId=${this.$config.public.user}, UserToken=${this.$config.public.token}`
+          }
+      };
+
+      const getRandomID = () => Math.floor(Math.random() * 1000000);
+      const identifier = getRandomID();
+
+      this.embedLink = await $fetch(
+          `${this.$config.public.url}/api/v1/headless/course/view?identifier=${identifier}&id=${this.courseId}`,
+          params
+      );
       addMessage(`/api/v1/headless/course/view?id=${this.courseId}`, this.embedLink);
       window.addEventListener('message', this.onMessage);
 
