@@ -38,6 +38,18 @@
                     </span>
                     Edit
                 </button>
+                <button @click.stop="duplicate">
+                    <span class="material-icons-sharp">
+                        content_copy
+                    </span>
+                    Duplicate
+                </button>
+                <button @click.stop="exportCourse">
+                    <span class="material-icons-sharp">
+                        file_download
+                    </span>
+                    Export SCORM
+                </button>
                 <button class="remove" @click.stop="remove">
                     <span class="material-icons-sharp">
                         remove_circle
@@ -54,7 +66,7 @@
 </template>
 
 <script>
-import { removeCourse } from '@/store/global.js';
+import { addCourse, removeCourse } from '@/store/global.js';
 
 export default {
     name: 'Course',
@@ -65,15 +77,20 @@ export default {
     },
     methods: {
         async remove() {
-            const params = {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `COASSEMBLE-V1-SHA256 UserId=${this.$config.public.user}, UserToken=${this.$config.public.token}`
-                }
-            };
-
-            await $fetch(`${this.$config.public.url}/api/v1/headless/course/${this.course.id}`, params);
+            await $fetch(`/api/delete`, { method: 'DELETE', query: { id: this.course.id } });
             removeCourse(this.course.id);
+        },
+        async duplicate() {
+            const course = await $fetch(`/api/duplicate`, { query: { id: this.course.id } });
+            addCourse(course);
+        },
+        async exportCourse() {
+            const file = await $fetch(`/api/export`, { query: { id: this.course.id } });
+            const url = window.URL.createObjectURL(new Blob([file]));
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${this.course.title}.zip`;
+            a.click();
         }
     }
 }
@@ -113,7 +130,7 @@ export default {
     .course-card {
         display: flex;
         align-items: center;
-        gap: 24px;
+        gap: 16px;
         padding-right: 16px;
         width: 100%;
         .title {
@@ -130,10 +147,11 @@ export default {
         display: flex;
         align-items: center;
         gap: 8px;
+        font-size: 14px;
         font-weight: 600;
         color: var(--primary-shade);
         .material-icons-sharp {
-            font-size: 40px;
+            font-size: 32px;
         }
         &.remove {
             color: #BEB8B8;
@@ -144,10 +162,10 @@ export default {
             gap: 8px;
         }
         button {
-            padding: 8px 16px;
+            padding: 8px 12px;
             border-radius: 12px;
             .material-icons-sharp {
-                font-size: 24px;
+                font-size: 20px;
             }
             &:hover:not(.remove) {
                 background-color: var(--primary-fade);

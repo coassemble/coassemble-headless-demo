@@ -23,20 +23,7 @@ export default {
         }
     },
     async mounted() {
-        const params = {
-            headers: {
-                'Authorization': `COASSEMBLE-V1-SHA256 UserId=${this.$config.public.user}, UserToken=${this.$config.public.token}`
-            }
-        };
-
-        const getRandomID = () => Math.floor(Math.random() * 1000000);
-        const clientIdentifier = getRandomID();
-        const identifier = getRandomID();
-
-        this.embedLink = await $fetch(
-            `${this.$config.public.url}/api/v1/headless/course/edit?clientIdentifier=${clientIdentifier}&identifier=${identifier}`,
-            params
-        );
+        this.embedLink = await $fetch('/api/edit');
         addMessage(`/api/v1/headless/course/edit`, this.embedLink);
         window.addEventListener('message', this.onMessage);
     },

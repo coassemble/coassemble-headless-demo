@@ -149,13 +149,7 @@ export default {
   },
   methods: {
     async getCourses() {
-      const params = {
-        headers: {
-          'Authorization': `COASSEMBLE-V1-SHA256 UserId=${this.$config.public.user}, UserToken=${this.$config.public.token}`
-        }
-      };
-
-      const courses = await $fetch(`${this.$config.public.url}/api/v1/headless/courses`, params);
+      const courses = await $fetch('/api/courses');
       addMessage('/api/v1/headless/courses', JSON.stringify(courses, null, 2));
       setCourses(courses);
     },
@@ -360,7 +354,7 @@ main {
         background-color: var(--cloud);
         border-radius: 12px;
         font-weight: 200;
-        font-size: 14px;
+        font-size: 10px;
         white-space: pre-wrap;
         word-wrap: break-word;
         overflow: auto;

@@ -48,29 +48,14 @@
         }
     },
     async mounted() {
-      const params = {
-          headers: {
-              'Authorization': `COASSEMBLE-V1-SHA256 UserId=${this.$config.public.user}, UserToken=${this.$config.public.token}`
-          }
-      };
-
-      const getRandomID = () => Math.floor(Math.random() * 1000000);
-      const identifier = getRandomID();
-
-      this.embedLink = await $fetch(
-          `${this.$config.public.url}/api/v1/headless/course/view?identifier=${identifier}&id=${this.courseId}`,
-          params
-      );
+      this.embedLink = await $fetch('/api/view', { query: { id: this.courseId } });
       addMessage(`/api/v1/headless/course/view?id=${this.courseId}`, this.embedLink);
       window.addEventListener('message', this.onMessage);
 
-      setInterval(() => {
-            this.loading = this.loading === 'Course loading...' ? 'Course loading' : this.loading + '.';
-        }, 500);
+      setInterval(() => this.loading = this.loading === 'Course loading...' ? 'Course loading' : this.loading + '.', 500);
     },
     beforeUnmount() {
       window.removeEventListener('message', this.onMessage);
-
     },
     methods: {
         onMessage(event) {
@@ -80,9 +65,8 @@
             } catch (e) {
                 return;
             }
-            if (message.event === 'progress') {
-                this.course.progress = message.data.progress;
-                setCourse(this.course);
+            if (message && message.event === 'progress') {
+                setCourse({ ...this.course, progress: message.data.progress });
             }
         }
     }

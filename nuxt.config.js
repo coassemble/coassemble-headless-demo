@@ -29,10 +29,11 @@ export default defineNuxtConfig({
         '~/styles/global.scss'
     ],
     runtimeConfig: {
-        public: {
-            url: process.env.API_URL,
-            token: process.env.API_KEY,
-            user: process.env.API_USER_ID
+        url: process.env.API_URL,
+        token: process.env.API_KEY,
+        user: process.env.API_USER_ID,
+        headers: {
+            'Authorization': `COASSEMBLE-V1-SHA256 UserId=${process.env.API_USER_ID}, UserToken=${process.env.API_KEY}`
         }
     },
 });
