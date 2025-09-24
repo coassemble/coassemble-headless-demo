@@ -8,6 +8,7 @@ export default defineEventHandler(async (event) => {
   const identifier = getRandomID();
 
   let params = {
+    action: 'edit',
     clientIdentifier,
     identifier,
     options: {
