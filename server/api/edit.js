@@ -1,4 +1,4 @@
-const getRandomID = () => Math.floor(Math.random() * 1000000);
+const getRandomID = () => String(Math.floor(Math.random() * 1000000));
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
