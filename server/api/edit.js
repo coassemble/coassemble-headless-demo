@@ -7,12 +7,15 @@ export default defineEventHandler(async (event) => {
   const clientIdentifier = getRandomID();
   const identifier = getRandomID();
 
-  let query = {
+  let params = {
     clientIdentifier,
     identifier,
-    colorPrimary: '#C4BCFC', 
-    translations: true
+    options: {
+      color: '#C4BCFC', 
+      translations: true,
+      loom: true
+    }
   };
-  if (id) query.id = id;
-  return await $fetch(`${config.url}/v1/headless/course/edit`, { query, headers: config.headers });
+  if (id) params.id = id;
+  return await $fetch(`${config.url}/v1/headless/course/url`, { body: params, headers: config.headers, method: 'POST' });
 });
