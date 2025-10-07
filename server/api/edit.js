@@ -14,7 +14,8 @@ export default defineEventHandler(async (event) => {
     options: {
       color: '#C4BCFC', 
       translations: true,
-      loom: true
+      loom: true,
+      feedback: false
     }
   };
   if (id) params.id = id;
