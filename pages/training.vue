@@ -14,7 +14,7 @@
   <section>
     <div class="courses-header">
       <span class="placeholder" />
-      <button @click="isCreating = true">
+      <button @click="isCreating = !isCreating">
         <span class="material-icons-sharp">
           add
         </span>
@@ -38,6 +38,12 @@
             document_scanner
           </span>
           Document to course
+        </button>
+        <button @click="$router.push('/build?flow=presentation')">
+          <span class="material-icons-sharp">
+            slideshow
+          </span>
+          Convert presentation
         </button>
       </div>
     </div>

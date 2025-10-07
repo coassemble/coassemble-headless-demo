@@ -354,7 +354,7 @@ main {
         background-color: var(--cloud);
         border-radius: 12px;
         font-weight: 200;
-        font-size: 14px;
+        font-size: 10px;
         white-space: pre-wrap;
         word-wrap: break-word;
         overflow: auto;

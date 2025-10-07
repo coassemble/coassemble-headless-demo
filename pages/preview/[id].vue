@@ -48,17 +48,16 @@
         }
     },
     async mounted() {
-      this.embedLink = await $fetch('/api/view', { query: { id: this.courseId } });
-      addMessage(`/api/v1/headless/course/view?id=${this.courseId}`, this.embedLink);
-      window.addEventListener('message', this.onMessage);
+        this.embedLink = await $fetch('/api/edit', { query: { flow: 'preview', id: this.courseId } });
+        addMessage(`/api/v1/headless/course/preview?id=${this.courseId}`, this.embedLink);
+        window.addEventListener('message', this.onMessage);
 
-      setInterval(() => {
+        setInterval(() => {
             this.loading = this.loading === 'Course loading...' ? 'Course loading' : this.loading + '.';
         }, 500);
     },
     beforeUnmount() {
-      window.removeEventListener('message', this.onMessage);
-
+        window.removeEventListener('message', this.onMessage);
     },
     methods: {
         onMessage(event) {

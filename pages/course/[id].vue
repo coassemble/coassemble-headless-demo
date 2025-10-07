@@ -52,13 +52,10 @@
       addMessage(`/api/v1/headless/course/view?id=${this.courseId}`, this.embedLink);
       window.addEventListener('message', this.onMessage);
 
-      setInterval(() => {
-            this.loading = this.loading === 'Course loading...' ? 'Course loading' : this.loading + '.';
-        }, 500);
+      setInterval(() => this.loading = this.loading === 'Course loading...' ? 'Course loading' : this.loading + '.', 500);
     },
     beforeUnmount() {
       window.removeEventListener('message', this.onMessage);
-
     },
     methods: {
         onMessage(event) {
@@ -68,9 +65,8 @@
             } catch (e) {
                 return;
             }
-            if (message.event === 'progress') {
-                this.course.progress = message.data.progress;
-                setCourse(this.course);
+            if (message && message.event === 'progress') {
+                setCourse({ ...this.course, progress: message.data.progress });
             }
         }
     }
