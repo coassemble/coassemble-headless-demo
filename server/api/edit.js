@@ -15,6 +15,7 @@ export default defineEventHandler(async (event) => {
       color: '#C4BCFC', 
       translations: true,
       loom: true,
+      publishing: true,
       narrations: true
     }
   };
